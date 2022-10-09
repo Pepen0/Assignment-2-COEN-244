@@ -25,6 +25,6 @@ private:
     string courseNumber;
     string courseName;
     double numbercredit;
-    lecturetime time();
+    lecturetime time;
 };
 #endif

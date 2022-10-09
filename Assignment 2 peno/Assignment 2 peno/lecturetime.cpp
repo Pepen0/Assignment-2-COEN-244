@@ -2,9 +2,9 @@
 using namespace std;
 
 lecturetime::lecturetime(){
-    set_first_day(NULL);
-    set_second_day(NULL);
-    set_hour(NULL);
+    set_first_day("");
+    set_second_day("");
+    set_hour(0);
 }
 lecturetime::lecturetime(string x,string y,int z){
     set_first_day(x);

@@ -26,7 +26,7 @@ void Course::setnumbercredit(double i)
 
 void Course::setlecturetime(lecturetime t)
 {
-    time()=t;
+    time=t;
     
 }
 
@@ -45,5 +45,5 @@ double Course::getnumberofcredit()
 
 lecturetime Course::getlecturetime()
 {
-    return time();
+    return time;
 }
