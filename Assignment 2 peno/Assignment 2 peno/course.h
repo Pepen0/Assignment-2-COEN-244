@@ -8,6 +8,8 @@ using namespace std;
 class Course
 {
 public:
+    
+    Course(string,string,double,lecturetime);
     void setcoursenumber(string);
     void setcourseNames(string);
     void setnumbercredit(double);
@@ -23,6 +25,6 @@ private:
     string courseNumber;
     string courseName;
     double numbercredit;
-    lecturetime time;
+    lecturetime time();
 };
 #endif

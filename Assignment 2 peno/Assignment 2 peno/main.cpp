@@ -10,11 +10,8 @@ int main()
 {
 
     lecturetime lecture_info("mardi","mercredi",15) ;
-    
-    cout<<"Vos cour sont "<<lecture_info.get_first_day()<<" et "<<lecture_info.get_second_day()<<" a "<<lecture_info.get_hour()<<"h. "   ;
-    
-    
-    
-    
+
+    Course course_info ("COEN244","PROGRAMMING METHODOLOGY",3.0,lecture_info);
+
     
 }

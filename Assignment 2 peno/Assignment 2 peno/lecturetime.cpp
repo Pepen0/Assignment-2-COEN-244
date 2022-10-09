@@ -1,7 +1,11 @@
 #include "lecturetime.h"
 using namespace std;
 
-
+lecturetime::lecturetime(){
+    set_first_day(NULL);
+    set_second_day(NULL);
+    set_hour(NULL);
+}
 lecturetime::lecturetime(string x,string y,int z){
     set_first_day(x);
     set_second_day(y);

@@ -2,6 +2,14 @@
 
 using namespace std;
 
+Course::Course(string x,string y,double w,lecturetime z)
+{
+    setcoursenumber(x);
+    setcourseNames(y);
+    setnumbercredit(w);
+    setlecturetime(z);
+}
+
 void Course::setcoursenumber(string i)
 {
     courseNumber = i;
@@ -18,7 +26,8 @@ void Course::setnumbercredit(double i)
 
 void Course::setlecturetime(lecturetime t)
 {
-    time = t;
+    time()=t;
+    
 }
 
 string Course::getcourseName()
@@ -36,5 +45,5 @@ double Course::getnumberofcredit()
 
 lecturetime Course::getlecturetime()
 {
-    return time;
+    return time();
 }

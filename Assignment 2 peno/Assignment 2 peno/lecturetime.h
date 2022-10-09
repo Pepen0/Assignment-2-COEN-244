@@ -9,6 +9,7 @@ class lecturetime
 
 public:
     
+    lecturetime();
     lecturetime(string,string,int);
     
     void set_first_day(string);
