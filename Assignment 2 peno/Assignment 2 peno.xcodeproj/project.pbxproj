@@ -77,12 +77,12 @@
 				19CEDA1B28F0B97B0004CFD4 /* lecturetime.cpp */,
 				19CEDA1F28F0B97B0004CFD4 /* course.h */,
 				19CEDA2028F0B97B0004CFD4 /* course.cpp */,
+				19CEDA1A28F0B97B0004CFD4 /* student.h */,
+				19CEDA1E28F0B97B0004CFD4 /* student.cpp */,
 				19CEDA2128F0B97B0004CFD4 /* CourseRegistration.cpp */,
 				19CEDA1928F0B97A0004CFD4 /* CourseRegistration.h */,
 				19CEDA1828F0B97A0004CFD4 /* dataManager.cpp */,
 				19CEDA1C28F0B97B0004CFD4 /* dataManager.h */,
-				19CEDA1E28F0B97B0004CFD4 /* student.cpp */,
-				19CEDA1A28F0B97B0004CFD4 /* student.h */,
 			);
 			path = "Assignment 2 peno";
 			sourceTree = "<group>";

@@ -13,6 +13,17 @@ student::student()
         array_of_course[i] = NULL;
     }
 }
+student::student(string x,int y,double z,Course *w){
+    for (int i = 0; i < 6; i++)
+    {
+        array_of_course[i] = NULL;
+    }
+    set_studentname(x);
+    set_studentID(y);
+    set_student_credit(z);
+    set_array_of_course(w);
+    
+}
 
 // setter
 
@@ -26,16 +37,39 @@ void student::set_studentID(int x)
 
     studentID = x;
 }
-void student::set_student_credit(int x)
+void student::set_student_credit(double x)
 {
 
     student_credit = x;
 }
 
-void student::set_array_of_course(Course *x, int y)
+void student::set_array_of_course(Course *x)
 {
-
-    array_of_course[y] = x;
+    
+    for(int i=0;i<6;i++)
+    {
+        if (test_overlap(x) && array_of_course[i]==NULL && student_credit<15 && i<6)
+        {
+            array_of_course[i] = x;
+            student_credit=student_credit+x->getnumberofcredit();
+           
+            
+//----------------------------------------------------------------------------------------------------------------------------
+            cout<< " Your course num "<<i+1<<" was added , it is "<<x->getcourseName()<<endl;
+            cout<< " You now have "<< student_credit <<" credits. "<<endl;
+//----------------------------------------------------------------------------------------------------------------------------
+            break;
+        }
+        else
+        {
+//----------------------------------------------------------------------------------------------------------------------------
+            cout <<x->getcourseName()<<" wasn't added to the "<<i <<"spot"<<endl<< " You now have "<< student_credit <<" credits. "<<endl;;
+//----------------------------------------------------------------------------------------------------------------------------
+        }
+    }
+    
+    
+    
 }
 
 // getter
@@ -50,7 +84,7 @@ int student::get_studentID()
     return studentID;
 }
 
-int student::get_student_credit()
+double student::get_student_credit()
 {
     return student_credit;
 }
@@ -60,3 +94,22 @@ Course* student::get_array_of_course(int x)
     return array_of_course[x];
 }
 // member function
+
+bool student::test_overlap(Course *x){
+    
+    for (int j=0;j<6;j++)
+    {
+        if (array_of_course[j]==NULL) {
+            return true;
+        }
+        if((array_of_course[j]->getlecturetime().get_first_day()==x->getlecturetime().get_first_day()||array_of_course[j]->getlecturetime().get_second_day()==x->getlecturetime().get_second_day())&&( array_of_course[j]->getlecturetime().get_hour()==x->getlecturetime().get_hour()))
+        {
+            return false;
+        }
+    }
+    
+    
+    return true;
+    
+}
+

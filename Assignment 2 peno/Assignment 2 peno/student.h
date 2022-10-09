@@ -10,6 +10,8 @@ class student
 public:
     // constroctor
     student();
+    student(string,int,double,Course*);
+
 
     // setter
 
@@ -17,9 +19,9 @@ public:
 
     void set_studentID(int);
 
-    void set_student_credit(int);
+    void set_student_credit(double);
 
-    void set_array_of_course(Course *, int);
+    void set_array_of_course(Course *);
 
     // getter
 
@@ -27,18 +29,22 @@ public:
 
     int get_studentID();
 
-    int get_student_credit();
+    double get_student_credit();
 
     Course *get_array_of_course(int x);
 
     // member function
+    
+    bool test_overlap(Course *);
+
+    
 
 private:
     string studentname;
 
     int studentID;
 
-    int student_credit;
+    double student_credit;
 
     Course *array_of_course[6];
 };
