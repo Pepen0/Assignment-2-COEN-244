@@ -21,7 +21,7 @@ public:
 
     void set_student_credit(double);
 
-    void set_array_of_course(Course *);
+    bool set_array_of_course(Course *);
 
     // getter
 

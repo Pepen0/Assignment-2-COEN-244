@@ -2,7 +2,16 @@
 
 using namespace std;
 
-Course::Course(string x,string y,double w,lecturetime z)
+
+Course::Course()
+{
+    setcoursenumber("");
+    setcourseNames("");
+    setnumbercredit(0);
+    setlecturetime(NULL);
+}
+
+Course::Course(string x,string y,double w,lecturetime *z)
 {
     setcoursenumber(x);
     setcourseNames(y);
@@ -24,8 +33,10 @@ void Course::setnumbercredit(double i)
     numbercredit = i;
 }
 
-void Course::setlecturetime(lecturetime t)
+void Course::setlecturetime(lecturetime *t)
 {
+    
+    time=new lecturetime;
     time=t;
     
 }
@@ -43,7 +54,7 @@ double Course::getnumberofcredit()
     return numbercredit;
 }
 
-lecturetime Course::getlecturetime()
+lecturetime* Course::getlecturetime()
 {
     return time;
 }

@@ -12,7 +12,11 @@ student::student()
     {
         array_of_course[i] = NULL;
     }
+    set_studentname("No name");
+    set_studentID(0);
+    set_student_credit(0);
 }
+
 student::student(string x,int y,double z,Course *w){
     for (int i = 0; i < 6; i++)
     {
@@ -43,12 +47,12 @@ void student::set_student_credit(double x)
     student_credit = x;
 }
 
-void student::set_array_of_course(Course *x)
+bool student::set_array_of_course(Course *x)
 {
     
     for(int i=0;i<6;i++)
     {
-        if (test_overlap(x) && array_of_course[i]==NULL && student_credit<15 && i<6)
+        if (test_overlap(x) && array_of_course[i]==NULL && (x->getnumberofcredit()+student_credit)<=15 && i<6)
         {
             array_of_course[i] = x;
             student_credit=student_credit+x->getnumberofcredit();
@@ -58,15 +62,13 @@ void student::set_array_of_course(Course *x)
             cout<< " Your course num "<<i+1<<" was added , it is "<<x->getcourseName()<<endl;
             cout<< " You now have "<< student_credit <<" credits. "<<endl;
 //----------------------------------------------------------------------------------------------------------------------------
-            break;
+            return true;
         }
-        else
-        {
-//----------------------------------------------------------------------------------------------------------------------------
-            cout <<x->getcourseName()<<" wasn't added to the "<<i <<"spot"<<endl<< " You now have "<< student_credit <<" credits. "<<endl;;
-//----------------------------------------------------------------------------------------------------------------------------
-        }
+       
     }
+   
+    cout<<"course not added to student file !!!";
+    return false;
     
     
     
