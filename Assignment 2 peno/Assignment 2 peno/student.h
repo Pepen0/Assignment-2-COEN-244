@@ -10,7 +10,8 @@ class student
 public:
     // constroctor
     student();
-    student(string,int,double,Course*);
+    student(string,int);
+    student(string,int,Course*);
 
 
     // setter
@@ -19,7 +20,7 @@ public:
 
     void set_studentID(int);
 
-    void set_student_credit(double);
+    void set_student_credit();
 
     bool set_array_of_course(Course *);
 

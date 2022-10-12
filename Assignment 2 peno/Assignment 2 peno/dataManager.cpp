@@ -113,9 +113,21 @@ bool dataManager::Delete(student *x)
 bool dataManager::registering_to_Course(student *x, Course &y)
 {
     
-//    insertCourseRegistration(course_array[number_of_courses]);
+
     x->set_array_of_course(&y);
-    insertStudent(x);
+    
+    for(int i=0 ;i<number_of_courses;i++)
+    {
+        if((course_array[i]->get_courseregister()->getcourseName()==y.getcourseName())&&(course_array[i]->get_courseregister()->getcoursenumber()==y.getcoursenumber()))
+        {
+            course_array[i]->set_array_of_student(x, number_of_student);
+        }
+    }
+    
+    
+    
+    insertCourseRegistration(course_array[number_of_courses]);
+    
     
     return true;
     
@@ -168,13 +180,13 @@ void dataManager::studentCourses(int x)
 
 void dataManager::print()
 {
-    cout<<"Course list :"<<endl;
+    cout<<"Course list :";
     
     for(int i=0;i<number_of_courses;i++)
     {
         cout<<course_array[i]->get_courseregister()->getcourseName()<<" ( "<<course_array[i]->get_courseregister()->getcoursenumber()<<" )  ,"<<course_array[i]->get_courseregister()->getnumberofcredit()<<" credits.The lectures are on "<<course_array[i]->get_courseregister()->getlecturetime()->get_first_day()<<" and "<<course_array[i]->get_courseregister()->getlecturetime()->get_second_day()<<" at "<<course_array[i]->get_courseregister()->getlecturetime()->get_hour()<<" h.";
         cout<<endl<<"             ";
     }
-    
+    cout<<endl<<endl;
     
 }

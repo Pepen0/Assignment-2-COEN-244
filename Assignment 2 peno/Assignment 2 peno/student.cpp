@@ -14,17 +14,27 @@ student::student()
     }
     set_studentname("No name");
     set_studentID(0);
-    set_student_credit(0);
+    set_student_credit();
 }
-
-student::student(string x,int y,double z,Course *w){
+student::student(string x,int y){
     for (int i = 0; i < 6; i++)
     {
         array_of_course[i] = NULL;
     }
     set_studentname(x);
     set_studentID(y);
-    set_student_credit(z);
+    set_student_credit();
+    set_array_of_course(NULL);
+    
+}
+student::student(string x,int y,Course *w){
+    for (int i = 0; i < 6; i++)
+    {
+        array_of_course[i] = NULL;
+    }
+    set_studentname(x);
+    set_studentID(y);
+    set_student_credit();
     set_array_of_course(w);
     
 }
@@ -41,10 +51,16 @@ void student::set_studentID(int x)
 
     studentID = x;
 }
-void student::set_student_credit(double x)
+void student::set_student_credit()
 {
-
-    student_credit = x;
+    for(int i=0 ; i<6;i++)
+    {
+        if (array_of_course[i]!=NULL) {
+            student_credit+=array_of_course[i]->getnumberofcredit();
+        }
+    }
+    
+    //student_credit = sum of all the course ;
 }
 
 bool student::set_array_of_course(Course *x)
@@ -52,15 +68,22 @@ bool student::set_array_of_course(Course *x)
     
     for(int i=0;i<6;i++)
     {
-        if (test_overlap(x) && array_of_course[i]==NULL && (x->getnumberofcredit()+student_credit)<=15 && i<6)
+        if (x!=NULL &&test_overlap(x) && array_of_course[i]==NULL && (x->getnumberofcredit()+ get_student_credit())<=15 && i<6)
         {
             array_of_course[i] = x;
-            student_credit=student_credit+x->getnumberofcredit();
+            
+            student_credit+=x->getnumberofcredit();
            
             
 //----------------------------------------------------------------------------------------------------------------------------
             cout<< " Your course num "<<i+1<<" was added , it is "<<x->getcourseName()<<endl;
             cout<< " You now have "<< student_credit <<" credits. "<<endl;
+//----------------------------------------------------------------------------------------------------------------------------
+            return true;
+        }else if (x!=NULL)
+        {
+//----------------------------------------------------------------------------------------------------------------------------
+            cout<<endl<< "--- No course added ---"<<endl;
 //----------------------------------------------------------------------------------------------------------------------------
             return true;
         }
@@ -104,7 +127,7 @@ bool student::test_overlap(Course *x){
         if (array_of_course[j]==NULL) {
             return true;
         }
-        if((array_of_course[j]->getlecturetime().get_first_day()==x->getlecturetime().get_first_day()||array_of_course[j]->getlecturetime().get_second_day()==x->getlecturetime().get_second_day())&&( array_of_course[j]->getlecturetime().get_hour()==x->getlecturetime().get_hour()))
+        if((array_of_course[j]->getlecturetime()->get_first_day()==x->getlecturetime()->get_first_day()||array_of_course[j]->getlecturetime()->get_second_day()==x->getlecturetime()->get_second_day())&&( array_of_course[j]->getlecturetime()->get_hour()==x->getlecturetime()->get_hour()))
         {
             return false;
         }
